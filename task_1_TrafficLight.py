@@ -39,3 +39,6 @@ class TrafficLight:
 
 trf = TrafficLight()
 trf.running()
+
+
+# Реализован бесконечный цикл. Прерывается стандартным консольным способом.
