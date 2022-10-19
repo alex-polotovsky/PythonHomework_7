@@ -16,6 +16,9 @@ speed, color, name, is_police (булево).
 """
 
 
+from time import sleep
+
+
 class Car:
 
     def __init__(self, speed, color, name, is_police: bool):
@@ -24,7 +27,9 @@ class Car:
         self.name = name
         self.is_police = is_police
 
-    def go(self):
+    def go(self, speed):
+        if self.speed != speed:
+            self.speed = speed
         print(f'Машина {self.name} поехала.')
 
     def stop(self):
@@ -44,6 +49,9 @@ class TownCar(Car):
         if self.speed > 60:
             print('Вы превысили скорость!')
         print(f'скорость: {self.speed}')
+
+    def answer(self):
+        print('Откуда вы берётесь...')
 
 
 class SportCar(Car):
@@ -65,3 +73,40 @@ class PoliceCar(Car):
 
     def megafon(self, obj_name):
         print(f'Автомобиль {obj_name} прижмитесь к обочине.')
+
+
+avto_1 = TownCar(50, 'Yellow', 'Kia Rio', False)
+avto_2 = SportCar(110, 'Blue', 'Porsche 911 GT2', False )
+avto_3 = PoliceCar(60, 'White', 'Ford Focus', True)
+
+avto_1.go(70)
+sleep(3)
+avto_1.show_speed()
+sleep(1)
+avto_3.go(80)
+sleep(2)
+avto_3.show_speed()
+sleep(1)
+avto_3.megafon(avto_1.name)
+sleep(1)
+avto_1.answer()
+sleep(2)
+avto_1.turn('направо')
+sleep(1)
+avto_1.stop()
+avto_1.show_speed()
+sleep(2)
+print()
+avto_2.go(110)
+sleep(1)
+avto_2.show_speed()
+avto_3.go(80)
+sleep(3)
+avto_3.show_speed()
+sleep(2)
+avto_3.megafon(avto_2.name)
+sleep(1)
+avto_2.answer()
+avto_2.go(200)
+sleep(1)
+avto_2.show_speed()
